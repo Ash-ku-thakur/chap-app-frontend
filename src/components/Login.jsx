@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { setAuthUser } from "../redux/userSlicer";
 
 const Login = () => {
   let [user, setUser] = useState({
@@ -10,6 +12,7 @@ const Login = () => {
   });
 
   let navigate = useNavigate();
+  let dispatch = useDispatch();
 
   let formSubmitHandler = async (e) => {
     e?.preventDefault();
@@ -25,10 +28,10 @@ const Login = () => {
         }
       );
       console.log(response);
+      dispatch(setAuthUser(response?.data?.user))
 
       if (response?.data?.success) {
         navigate("/homePage");
-
         toast.success(response?.data?.massage);
       }
 

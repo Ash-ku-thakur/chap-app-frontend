@@ -12,7 +12,7 @@ const SignUp = () => {
     gender: "",
   });
 
- let navigate = useNavigate()
+  let navigate = useNavigate();
 
   let handleBox = (gender) => {
     // console.log(user?.gender);
@@ -34,8 +34,8 @@ const SignUp = () => {
       );
       console.log(response);
       if (response?.data?.success) {
-        navigate('/login')
-        toast.success(response?.data?.massage)
+        navigate("/login");
+        toast.success(response?.data?.massage);
       }
       // console.log(user);
       setUser({
