@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 const Login = () => {
   let [user, setUser] = useState({
@@ -9,7 +9,7 @@ const Login = () => {
     password: "",
   });
 
- let navigate = useNavigate()
+  let navigate = useNavigate();
 
   let formSubmitHandler = async (e) => {
     e?.preventDefault();
@@ -27,9 +27,9 @@ const Login = () => {
       console.log(response);
 
       if (response?.data?.success) {
-        navigate('/homePage')
+        navigate("/homePage");
 
-        toast.success(response?.data?.massage)
+        toast.success(response?.data?.massage);
       }
 
       setUser({
@@ -37,6 +37,7 @@ const Login = () => {
         password: "",
       });
     } catch (error) {
+      toast.error(error?.response?.data?.massage);
       console.log(error);
     }
   };
@@ -85,7 +86,10 @@ const Login = () => {
           </p>
 
           <div>
-            <button type="submit" className="btn btn-block btn-md mt-2 border border-slate-700">
+            <button
+              type="submit"
+              className="btn btn-block btn-md mt-2 border border-slate-700"
+            >
               Login
             </button>
           </div>
