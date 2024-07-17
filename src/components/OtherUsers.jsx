@@ -9,7 +9,7 @@ const OtherUsers = () => {
     return null;
   }
   return (
-    <div className="overflow-auto">
+    <div className="overflow-auto flex-1">
       {otherUsers?.map((users) => (
         <OtherUserRaper key={users?._id} data={users} />
       ))}

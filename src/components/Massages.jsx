@@ -1,22 +1,21 @@
-import useGetOtherUsers from "../hooks/useGetOtherUsers";
+import { useSelector } from "react-redux";
+import useGetMassages from "../hooks/useGetMassages";
 import MassageRapper from "./MassageRapper";
 
 const Massages = () => {
-  useGetOtherUsers();
+  useGetMassages();
+
+  let { allMassages } = useSelector((state) => state?.massages);
+
+  if (!allMassages?.massages) {
+    return null;
+  }
 
   return (
     <div className="px-4 flex-1 overflow-auto">
-      <MassageRapper />
-      <MassageRapper />
-      <MassageRapper />
-      <MassageRapper />
-      <MassageRapper />
-      <MassageRapper />
-      <MassageRapper />
-      <MassageRapper />
-      <MassageRapper />
-      <MassageRapper />
-      <MassageRapper />
+      {allMassages?.massages?.map((mass) => (
+        <MassageRapper key={mass?._id} massage={mass} />
+      ))}
     </div>
   );
 };
