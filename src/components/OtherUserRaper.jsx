@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-const OtherUserRaper = () => {
+const OtherUserRaper = ({data}) => {
   let { authUser } = useSelector((state) => state?.user);
 
   return (
@@ -8,11 +8,11 @@ const OtherUserRaper = () => {
       <div className="flex items-center gap-2 cursor-pointer hover:bg-slate-200 hover:text-black rounded-2xl px-3">
         <div className="avatar online">
           <div className="w-14 rounded-full">
-            <img src={`${authUser?.profilePhoto}`} alt="" />
+            <img src={`${data?.profilePhoto}`} alt="" />
           </div>
         </div>
         <div>
-          <p>Ashish</p>
+          <p>{data?.name}</p>
         </div>
       </div>
       <hr className="my-2" />

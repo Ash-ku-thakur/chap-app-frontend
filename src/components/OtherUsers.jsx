@@ -1,19 +1,18 @@
+import { useSelector } from "react-redux";
 import OtherUserRaper from "./OtherUserRaper";
 
 const OtherUsers = () => {
+  let { otherUsers } = useSelector((state) => state?.user);
+
+  if (!otherUsers) {
+    // urly return if not present otherUsers
+    return null;
+  }
   return (
     <div className="overflow-auto">
-      <OtherUserRaper />
-      <OtherUserRaper />
-      <OtherUserRaper />
-      <OtherUserRaper />
-      <OtherUserRaper />
-      <OtherUserRaper />
-      <OtherUserRaper />
-      <OtherUserRaper />
-      <OtherUserRaper />
-      <OtherUserRaper />
-      <OtherUserRaper />
+      {otherUsers?.map((users) => (
+        <OtherUserRaper key={users?._id} data={users} />
+      ))}
     </div>
   );
 };
