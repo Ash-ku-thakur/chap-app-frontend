@@ -17,9 +17,9 @@ const useGetMassages = () => {
       let response = await axios.get(
         `http://localhost:8080/api/v1/massage/${selectedUser?._id}`
       );
-      dispatch(setMassages(response?.data?.findConversation[0]));
+      dispatch(setMassages(response?.data?.findConversation[0]?.massages));
 
-      console.log(response);
+      // console.log(response?.data?.findConversation[0]?.massages);
     } catch (error) {
       console.log(error);
     }
