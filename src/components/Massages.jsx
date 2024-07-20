@@ -8,7 +8,7 @@ const Massages = () => {
   let { allMassages } = useSelector((state) => state?.massages); // after redux get all massages
 
   if (!allMassages) {
-    return null;
+    return;
   }
 
   return (

@@ -6,6 +6,7 @@ let userSlicer = createSlice({
   initialState: {
     authUser: null,
     otherUsers: null,
+    copyOfOtherUsers:null,
     selectedUser: null,
   },
   reducers: {
@@ -15,11 +16,14 @@ let userSlicer = createSlice({
     setOtherUsers: (state, action) => {
       state.otherUsers = action.payload;
     },
+    setCopyOfOtherUsers: (state, action) => {
+      state.copyOfOtherUsers = action.payload;
+    },
     setSelectedUser: (state, action) => {
       state.selectedUser = action?.payload;
     },
   },
 });
 
-export let { setAuthUser, setOtherUsers, setSelectedUser } = userSlicer.actions;
+export let { setAuthUser, setOtherUsers, setSelectedUser, setCopyOfOtherUsers } = userSlicer.actions;
 export default userSlicer.reducer;

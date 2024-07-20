@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setOtherUsers } from "../redux/userSlicer";
+import { setCopyOfOtherUsers, setOtherUsers } from "../redux/userSlicer";
 
 const useGetOtherUsers = () => {
   useEffect(() => {
@@ -17,6 +17,7 @@ const useGetOtherUsers = () => {
         { withCredentials: true }
       );
       dispatch(setOtherUsers(response?.data?.otherUsers));
+      dispatch(setCopyOfOtherUsers(response?.data?.otherUsers))
     } catch (error) {
       console.log(error);
     }
